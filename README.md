@@ -9,6 +9,8 @@ Business Problem
 Problem: When a delivery truck breaks down, PepsiCo faces delays, stockouts, SLA breaches, and costly manual coordination. The process is slow, error-prone, and doesn’t scale.
 Solution: Agentic Logistics Incident Response automates the entire lifecycle. AI agents in ServiceNow detect the incident, assess impact, select the best reroute, and coordinate execution with partners like Schneider and Whole Foods. The system updates stakeholders in real time, transforming a reactive process into a proactive, scalable workflow that reduces downtime and boosts reliability.
 Architecture Overview
+![AD](https://github.com/user-attachments/assets/bf45e717-17e8-4776-a326-b4b57254c8cd)
+
 The architecture features three AI agents across ServiceNow and n8n, working in a unified agentic framework. Agents 1 and 2 run in ServiceNow: one analyzes SLA impact, the other selects the best reroute using NowLLM. Agent 3, hosted in n8n, orchestrates external communications via MCP — a standardized protocol for AI-to-system integration. It sends reroute instructions to Schneider and delay notifications to Whole Foods. Key ServiceNow tables (Supply Agreement, Incident, Delivery Delays) are updated throughout the process, ensuring full visibility and traceability of the incident lifecycle.
 Tables/ Outputs in ServiceNow
 ServiceNow tracks the incident lifecycle using three key records: Supply Agreement (penalty rates), Incident (breakdown event), and Delivery Delays (shipment status). As orchestration progresses, Delivery Delays is updated from pending to dispatched, with notes on actions taken, delay duration, new delivery time, and the reason — ensuring full downstream visibility.
